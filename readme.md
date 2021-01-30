@@ -20,7 +20,7 @@ The objective of the project is to create an online photo sharing social media n
 | Real Name | Github Username |
 | ------------- | ------------- |
 | Gianfranco Dumoulin | gianfrancodumoulinbertucci |
-| Content Cell  | Content Cell  |
+| Mohamad El Chanati  | mohamad-elchanati  |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
