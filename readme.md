@@ -21,7 +21,7 @@ The objective of the project is to create an online photo sharing social media n
 | ------------- | ------------- |
 | Gianfranco Dumoulin | gianfrancodumoulinbertucci |
 | Mohamad El Chanati  | mohamad-elchanati  |
-| Content Cell  | Content Cell  |
+| David Roper   | david-roper  |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
