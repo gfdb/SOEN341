@@ -22,7 +22,7 @@ The objective of the project is to create an online photo sharing social media n
 | Gianfranco Dumoulin | gianfrancodumoulinbertucci |
 | Mohamad El Chanati  | mohamad-elchanati  |
 | David Roper   | david-roper  |
-| Content Cell  | Content Cell  |
+| Maxwell Lee  | Cresfault  |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
 
