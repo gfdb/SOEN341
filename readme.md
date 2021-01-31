@@ -23,8 +23,7 @@ The objective of the project is to create an online photo sharing social media n
 | Mohamad El Chanati  | mohamad-elchanati  |
 | David Roper   | david-roper  |
 | Maxwell Lee  | Cresfault  |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Omar Elkassouani  | Omarelk09  |
 
 ## Languages and Techniques
 
