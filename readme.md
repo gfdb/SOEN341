@@ -14,6 +14,7 @@ The objective of the project is to create an online photo sharing social media n
 * Post pictures
 * Follow people
 * Like people's pictures
+* Timeline
 
 ## Team Members
 
