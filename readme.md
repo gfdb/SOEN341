@@ -2,11 +2,11 @@
 
 ## Description
 
-A group of software engineering students are building an Instagram replica as a class project. The main purpose of the project is to build Instagram however, learning about git and github are also an important part of this. There are going to be a handful of core features that we are going to focus on implementing as apart of the project(listed below). Stories, tasks, bug fixes and other types of tickets will be created and assigned to team members as the project moves along. 
+A group of software engineering students are building an Instagram replica as a class project. The main purpose of the project is to build Instagram however, learning about git and github are also an important part of this. There are going to be a handful of core features that we are going to focus on implementing as apart of the project(listed below). Stories, tasks, bug fixes and other types of tickets will be created and assigned to team members as the project moves along.
 
 ## Objective
 
-The objective of the project is to create an online photo sharing social media network, similar to the popular app called Instagram. 
+The objective of the project is to create an online photo sharing social media network, similar to the popular app called Instagram.
 
 ## Core Features
 
@@ -28,6 +28,7 @@ The objective of the project is to create an online photo sharing social media n
 
 ## Languages and Techniques
 
+* Python
 * TBD 
 
-## 
+##
