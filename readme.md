@@ -28,7 +28,6 @@ The objective of the project is to create an online photo sharing social media n
 
 ## Languages and Techniques
 
-* Python
-* TBD 
+* Flask,Bootstrap,CSS,Python,Javascript,Mysql
 
 ##
