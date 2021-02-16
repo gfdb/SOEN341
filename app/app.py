@@ -16,6 +16,13 @@ with open('static/posts.json', 'r') as read_file:
 def home():
     return render_template('timeline.html', posts=posts)
 
+#posting feature
+@app.route("/posting" )
+def post():
+    return render_template('posting.html', posts=posts)
+    
+    
+
 
 if __name__ == '__main__':
     app.run(debug=True)
