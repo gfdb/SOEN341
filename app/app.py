@@ -4,7 +4,7 @@
 #code to start application
 from json import load
 from flask import Flask, render_template
-app = Flask(name)
+app = Flask(__name__)
 
 
 posts = ''
@@ -17,5 +17,5 @@ def home():
     return render_template('timeline.html', posts=posts)
 
 
-if name == 'main':
+if __name__ == '__main__':
     app.run(debug=True)
