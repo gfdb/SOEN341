@@ -2,15 +2,20 @@
 #through the application
 
 #code to start application
+from json import load
 from flask import Flask, render_template
-app = Flask(__name__)
+app = Flask(name)
 
+
+posts = ''
+with open('static/posts.json', 'r') as read_file:
+    posts = load(read_file)
 
 @app.route("/")
-@app.route("/Timeline")
+@app.route("/timeline")
 def home():
-    return render_template('timeline.html')
+    return render_template('timeline.html', posts=posts)
 
 
-if __name__ == '__main__':
+if name == 'main':
     app.run(debug=True)
