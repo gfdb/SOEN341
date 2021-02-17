@@ -9,11 +9,19 @@
   </head>
   <body>
     <h1 style="color: aliceblue;">Post a picture</h1>
-    <form method="POST" action="" method="POST" >
-      <p style="color: aliceblue;"><input type="file" name="file"></p>
+    <form method="POST" action="" enctype="multipart/form-data">
+
+      <p style="color: aliceblue;">
+        <input type="file" name="file" accept=".png,.jpg">
+      </p>
         
-      <p style="color: aliceblue; ;"><input type="text" value="Description" size="50" style="width: auto; height: auto;" > Write your Description</p>
-      <p><input type="submit" value="Submit"></p>
+      <p style="color: aliceblue; ;">
+        <input type="text" name="description" placeholder="Description" size="50" style="width: auto; height: auto;" > Write your Description
+      </p>
+
+      <p>
+        <input type="submit" value="Submit">
+      </p>
       
 
     </form>
