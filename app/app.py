@@ -16,7 +16,7 @@ with open('app/static/posts.json', 'r') as read_file:
 
 @app.route("/")
 @app.route("/timeline")
-def home():
+def timeline():
     return render_template('timeline.html', posts=posts)
 
 #posting feature
@@ -53,7 +53,7 @@ def image_post():
         posts.insert(0, new_post)
         dump(posts, all_posts)
 
-    return redirect(url_for('home'))
+    return redirect(url_for('timeline'))
    
 
 
