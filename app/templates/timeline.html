@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 {% for post in posts %}
+
 <article class="media content-section">
   <div class="media-body">
     <div class="article-metadata">
@@ -13,20 +14,23 @@
         <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
         <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
       </div>
+
       <h6 class="mr-2"><b>{{ post.author }}</b> {{post.description}}</h6>
       {% for comment in post.comments %}
-          <p>{{ comment }}</p>
+          <p class="comment-styling">{{ comment }}</p>
       {% endfor %}
+      <form>
       <div class="comment">
-        <div class="d-flex flex-row align-items-start"><textarea class="form-control ml-1 shadow-none textarea"
+        <div class="d-flex flex-row align-items-start"><textarea id="comment-textarea" class="form-control ml-1 shadow-none textarea"
             placeholder="Add a comment..."></textarea>
         </div>
-        <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none comment" type="button">Post
-            comment</button>
-          <button class="btn btn-outline-primary btn-sm ml-1 shadow-none comment" type="button">Cancel</button>
+        <div class="mt-2 text-right"><input type ="submit" class="btn btn-primary btn-sm shadow-none comment" value="Post comment">
+           
+          <input class="btn btn-outline-primary btn-sm ml-1 shadow-none comment" onClick="eraseText();" type="button" value ="Cancel">
         </div>
         <small class="mr-2">{{ post.date_posted }}</small>
       </div>
+    </form>>
     </div>
   </div>
 </article>

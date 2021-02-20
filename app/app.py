@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 posts = ''
-with open('app/static/posts.json', 'r') as read_file:
+with open('static/posts.json', 'r') as read_file:
     posts = load(read_file)
 
 @app.route("/")
