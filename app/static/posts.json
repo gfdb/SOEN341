@@ -1,36 +1,51 @@
 [
     {
         "author": "Franco Dumoulin",
+        "comments": [
+            {
+                "author": "Franco Dumoulin",
+                "comment": "This looks like a great picture!"
+            },
+            {
+                "author": "Franco Dumoulin",
+                "comment": "spongebob me boi!"
+            }
+        ],
+        "date_posted": "April 20, 2020",
         "description": "nice day at bikini bottom",
         "image": "Spongebob.jpg",
-        "date_posted": "April 20, 2020",
-        "comments": [
-            "hello",
-            "goodbye"
-        ]
+        "uuid": "14a0c8cd-c10e-4953-af81-8d7cfee4b350"
     },
     {
         "author": "Mohamad El Chanati",
+        "comments": [],
+        "date_posted": "April 21, 2021",
         "description": "e=mc^2",
         "image": "einstein.jpg",
-        "date_posted": "April 21, 2021"
+        "uuid": "b8a40d30-f5c7-4a79-aef9-3a270a8af084"
     },
     {
         "author": "Maxwell Lee",
+        "comments": [],
+        "date_posted": "March 25, 2019",
         "description": "Astra lost in space",
         "image": "astra.png",
-        "date_posted": "March 25, 2019"
+        "uuid": "f466828c-2df2-46d9-8aa0-e4b5d839e006"
     },
     {
         "author": "David Roper",
+        "comments": [],
+        "date_posted": "January 20, 2030",
         "description": "I have the biggest swag in bikini bottom",
         "image": "Patrick.png",
-        "date_posted": "January 20, 2030"
+        "uuid": "17af790e-7699-4675-97d1-2d542c8924fd"
     },
     {
         "author": "Omar Elkassouani",
+        "comments": [],
+        "date_posted": "April 21, 2018",
         "description": "Hello :D",
         "image": "eren.png",
-        "date_posted": "April 21, 2018"
+        "uuid": "dd31faa4-ccd8-4ff0-b616-dfc8d2bdfc74"
     }
 ]

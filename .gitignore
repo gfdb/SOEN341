@@ -1,3 +1,6 @@
 .DS_Store
 test.py
+.vscode
 ./vscode
+insta-env
+app/static/images/
