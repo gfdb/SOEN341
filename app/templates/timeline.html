@@ -17,20 +17,24 @@
 
       <h6 class="mr-2"><b>{{ post.author }}</b> {{post.description}}</h6>
       {% for comment in post.comments %}
-          <p class="comment-styling">{{ comment }}</p>
+        <p class="comment-styling"><b>{{ comment['author'] }}</b>&nbsp;&nbsp;{{ comment['comment'] }}</p>
       {% endfor %}
-      <form>
-      <div class="comment">
-        <div class="d-flex flex-row align-items-start"><textarea id="comment-textarea" class="form-control ml-1 shadow-none textarea"
-            placeholder="Add a comment..."></textarea>
+      <form action="" method="post">
+        <div class="comment">
+            <div class="d-flex flex-row align-items-start">
+              {{form.comment(class_ = "form-control ml-1 shadow-none textarea")}}
+              {{form.parentID(value = post.uuid)}}
+              {{form.author(value = post.author)}} <!-- When users are added, this should be the current_user instead of post.author -->
+              {{ form.hidden_tag() }}
+            </div>
+            <div class="mt-2 text-right">
+              <input type="submit" class="btn btn-primary btn-sm shadow-none comment" value="Post comment">
+              <input class="btn btn-outline-primary btn-sm ml-1 shadow-none comment" onClick="eraseText();" type="button"
+                value="Cancel">
+            </div>
+            <small class="mr-2">{{ post.date_posted }}</small>
         </div>
-        <div class="mt-2 text-right"><input type ="submit" class="btn btn-primary btn-sm shadow-none comment" value="Post comment">
-           
-          <input class="btn btn-outline-primary btn-sm ml-1 shadow-none comment" onClick="eraseText();" type="button" value ="Cancel">
-        </div>
-        <small class="mr-2">{{ post.date_posted }}</small>
-      </div>
-    </form>>
+      </form>
     </div>
   </div>
 </article>
