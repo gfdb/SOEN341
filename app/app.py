@@ -34,9 +34,8 @@ def timeline():
         for post in posts:
             if post['uuid'] == parentID:
                 comment_data = {'author': author, 'comment': comment}
-                if "comments" in post:
-                    #update list of comments for that post
-                    post['comments'].append(comment_data)
+                #update list of comments for that post
+                post['comments'].append(comment_data)
                 break
         with open('app/static/posts.json', 'w') as all_posts:
             dump(posts, all_posts, indent=4, sort_keys=True)
