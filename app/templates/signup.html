@@ -1,12 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+
+
+<form action="/register" method="POST">
+
+    <p>
+       <h2 class='white-writing'>Thinking of joining us ?</h2>
+    </p>
+    <label class='white-writing'>Please enter your first name</label>
+    <!--<input type = "text" name="firstname"/>-->
+        {{form.firstname}}
+    <br/>
+
+        
+    <label class='white-writing'>Please enter your last name</label>
+        {{form.lastname}}
+    <br/>
+    <label class='white-writing'>Please enter your Email address</label>
+        {{form.email}}
+    <br/>
+    <label class='white-writing'>Please enter the user name you want to use</label>
+        {{form.username}}
+    <br/>
+    {% with messages = get_flashed_messages(category_filter=["username_error"]) %}
+            {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-warning" role="alert">
+                            <span class="container mt-3">{{ message }}</span>
+
+                        </div>
+                    {% endfor %}
+
+            {% endif %}
+        {% endwith %}
+    <label class='white-writing'>Please enter the password you want to use</label>
+    {{form.password}}<h6 class='white-writing'>(6 to 18 characters)</h6><br/>
+    {{ form.hidden_tag() }}
+    <input type = "submit" value = "Submit" />
+    <input type = "reset" value = "Reset" />
+
+
+
+</form>
+
+    {% block flash %}
+            {% with messages = get_flashed_messages(category_filter=["emailError"]) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-primary" role="alert" color="black">
+                        <span class="container mt-3">{{ message }}</span>
+
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+        {% endblock %}
+
+
+
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+
+{% endblock content %}

@@ -1,12 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+
+<!--
+
+    <div class="container">
+      <h1 style="color: aliceblue;">Welcome Back</h1>
+      <br>
+      <form action="" method="post">
+        <input type="text" placeholder="Username" name="username" value="{{request.form.username }}">
+
+         <input type="password" placeholder="Password" name="password" value="{{request.form.password }}">
+
+        <input class="btn btn-default" type="submit" value="Login">
+
+      </form>
+
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+-->
+<div>
+        
+        <form action = "/login" method="post">
+            {{ form.hidden_tag() }}
+
+            <h2 class='white-writing'>
+               Welcome Back !
+            </h2>
+            <br/>
+
+
+
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class='white-writing'>Username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="username" name="username" >
+                    <small id="emailHelp"  class='white-writing'>Your information is safe now</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class='white-writing'>Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name = "password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+
+                    {% with messages = get_flashed_messages(category_filter=["loginerror"]) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-warning" role="alert">
+                                <span class="container mt-3">{{ message }}</span>
+
+                            </div>
+                        {% endfor %}
+
+                    {% endif %}
+                    {% endwith %}
+
+
+            
+
+            <br/>
+        </form>
+
+{% endblock content %}
