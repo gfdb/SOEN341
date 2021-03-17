@@ -1,0 +1,44 @@
+[
+    {
+        "email": "concordia@a.ca",
+        "firstname": "Mohamad",
+        "lastname": "elchanati",
+        "password": "123456789",
+        "username": "moham123"
+    },
+    {
+        "emailaddress": "j",
+        "firstname": "j",
+        "lastname": "s",
+        "password": "1",
+        "username": "j"
+    },
+    {
+        "emailaddress": "mm@gmail.com",
+        "firstname": "mohamad",
+        "lastname": "el chanati",
+        "password": "mohamad123",
+        "username": "mohamad"
+    },
+    {
+        "emailaddress": "ahmad@123.com",
+        "firstname": "ahmad",
+        "lastname": "ahmad",
+        "password": "ahmad123456",
+        "username": "ahmad"
+    },
+    {
+        "emailaddress": "ahmad@123.com",
+        "firstname": "ahmad",
+        "lastname": "ahmad",
+        "password": "ahmad123456",
+        "username": "ahmad1"
+    },
+    {
+        "emailaddress": "omar@ss.com",
+        "firstname": "omar",
+        "lastname": "elk",
+        "password": "omar123456",
+        "username": "omar"
+    }
+]

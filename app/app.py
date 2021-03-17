@@ -4,10 +4,19 @@
 #code to start application
 from datetime import datetime
 from json import load, dump
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect,flash, session
 from os import path
 from uuid import uuid4
-from forms import CommentForm
+from forms import CommentForm, Register, Login
+from flask_wtf import FlaskForm
+
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired
+from wtforms.fields.html5 import EmailField
+from wtforms.validators import InputRequired, Email, Length
+
+from wtforms_components import validators
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'ErenYeager'
@@ -41,12 +50,12 @@ def timeline():
             dump(posts, all_posts, indent=4, sort_keys=True)
         return redirect(url_for('timeline'))
 
-    return render_template('timeline.html', posts=posts, form = form)
+    return render_template('timeline.html', posts=posts, form = form,username=session.get('username'))
 
 #posting feature
 @app.route("/posting")
 def post():
-    return render_template('posting.html', posts=posts)
+    return render_template('posting.html', posts=posts, username=session.get('username'))
 
 
 @app.route("/posting", methods=['POST'])
@@ -84,18 +93,75 @@ def image_post():
    
 
 
+
+def valid(username, password):
+    with open('app/static/accounts.json', 'r') as accounts_file:
+                accounts = load(accounts_file)
+    for account in accounts:
+        if username == account['username'] and password == account['password']:    
+            return True
+    return False
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    form = Login()
+    if form.validate_on_submit():
+        if valid(form.username.data, form.password.data):
+            username = form.username.data
+            session['username'] = form.username.data
+            flash(username + " is logged in",category='username is logged in')
+            return redirect(url_for('timeline'))
+        else:
+            flash("Your USERNAME/PASSWORD might be incorrect !" ,category='loginerror')
+    return render_template("login.html", form=form, posts=posts)
+
+
+
+
+
+
+
+@app.route("/register",methods=['POST','GET'])
+def signup():
+    form = Register()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            with open('app/static/accounts.json', 'r') as accounts_file:
+                accounts = load(accounts_file)
+
+            for account in accounts:
+                if form.username.data == account['username']:
+                    flash("This username was taken. Please try again" ,category='username_error')
+                    return redirect(url_for("signup"))
+            
+            
+            new_account = {
+                'firstname': form.firstname.data,
+                'lastname': form.lastname.data,
+                'emailaddress': form.email.data,
+                'username': form.username.data,
+                'password': form.password.data
+            }
+            
+            accounts.append(new_account)
+            with open('app/static/accounts.json', 'w') as all_accounts:
+                dump(accounts, all_accounts, indent=4, sort_keys=True)
+            
+            
+            for key in new_account:
+                print(key, ": ", new_account[key])
+
+            return redirect(url_for('login')) 
+    return render_template('signup.html',form=form)
     
 
 
 
-    
-    
-
-    
-
-
-    
-
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('timeline'))
 
 if __name__ == '__main__':
     app.run(debug=True)
