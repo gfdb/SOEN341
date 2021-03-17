@@ -14,24 +14,43 @@
     
 </head>
 <body>
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <div class="container">
-          <a href="/timeline"><img src="static/images/Logo.png" alt="Logo" width="195" height="35"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
+    {% block header%}
+        <header class="site-header">
+          <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+              <a href="/timeline"><img src="static/images/Logo.png" alt="Logo" width="195" height="35"></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                </div>
+                <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                  <a class="nav-item nav-link" href="/posting">Post</a>
+                </div>
+
+                {% if username %}
+                    <div class="navbar-nav">
+                      <li><a class="nav-link" href="/user-info"><span class="glyphicon glyphicon-user"></span>{{ username }} </a></li>
+                    </div>  
+                    <div class="navbar-nav">
+                      <li>   <a class="nav-link" href="/logout"><span class="glyphicon glyphicon-log-out"></span> Sign out </a></li>
+                    </div>
+                {% else %}      
+                    <div class="navbar-nav">
+                      <a class="nav-item nav-link" href="/login">Login</a>
+                    </div>
+                    <div class="navbar-nav">
+                      <a class="nav-item nav-link" href="/register">Signup</a>
+                    </div>
+                {% endif %}
+
+              </div>
             </div>
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="/posting">Post</a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
+          </nav>
+        </header>
+    {% endblock %}
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8">
