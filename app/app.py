@@ -59,10 +59,11 @@ def post():
 
 
 @app.route("/posting", methods=['POST'])
+
 def image_post():
 
     #Placeholder name. Will be replaced once user database is implemented.
-    poster_name = "Default"
+    poster_name = session.get('username')
 
     date = datetime.today().strftime("%d/%m/%Y")
     
