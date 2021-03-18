@@ -7,16 +7,16 @@
     {% if username %}
 
         
-        <h4 ><strong>Name: </strong></h4>{{ firstnamei }} &nbsp; {{ lastnamei }}
+    <div class = "white-writing"> <p class = "white-writing"><span style="font-size: x-large;"><strong>Name:</strong></span> &nbsp; {{ firstnamei }}  {{ lastnamei }}</p>
         
-        <h4><strong>Username: </strong></h4>{{ usernamei }}
+    <p class = "white-writing"><span style="font-size: x-large;"><strong>Username: </strong> </span> &nbsp; {{ usernamei }} </p></div>
         
         <br/>
-        
+
         <div class="row">
             {% for post in postsi %}
             <div class="column">
-                <img src="static/images/{{ post }}" alt="image" height="100px" width="100px">
+                <img src="static/images/{{ post }}" alt="image" height="200px" width="200px">
             </div>
             {% endfor %}
         </div>
