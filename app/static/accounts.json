@@ -40,5 +40,12 @@
         "lastname": "elk",
         "password": "omar123456",
         "username": "omar"
+    },
+    {
+        "emailaddress": "gdbertucci@gmail.com",
+        "firstname": "Gianfranco",
+        "lastname": "Dumoulin",
+        "password": "6969420",
+        "username": "gdbertucci"
     }
 ]
