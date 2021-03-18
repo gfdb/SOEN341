@@ -2,6 +2,22 @@
     {
         "author": "david",
         "comments": [],
+        "date_posted": "18/03/2021",
+        "description": "bam",
+        "image": "images copy 2.jpeg",
+        "uuid": "472f8763-a42c-42e1-8b9f-a9884fe2c7fa"
+    },
+    {
+        "author": "david",
+        "comments": [],
+        "date_posted": "18/03/2021",
+        "description": "the coin",
+        "image": "Heads_Image.jpg",
+        "uuid": "ab8791c4-8eab-4033-ba4a-f1f15d5bd3c1"
+    },
+    {
+        "author": "david",
+        "comments": [],
         "date_posted": "17/03/2021",
         "description": "central america",
         "image": "central-america-maps.png",

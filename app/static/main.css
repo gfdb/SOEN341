@@ -1,4 +1,4 @@
-body {
+  body {
     background: #0d1117;
     color: #333333;
     margin-top: 5rem;
@@ -99,7 +99,8 @@ body {
 
   .date {
     font-size: 11px
-}
+
+  }
 
 .comment-text {
     font-size: 12px
@@ -149,4 +150,11 @@ body {
 .column {
   float: left;
   padding: 5px;
+}
+
+.avatar{
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  border-radius: 25%;
 }
