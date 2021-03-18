@@ -139,3 +139,14 @@ body {
 .white-writing{
   color: aliceblue;
 }
+
+.row::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.column {
+  float: left;
+  padding: 5px;
+}
