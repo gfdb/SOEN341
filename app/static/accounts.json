@@ -40,5 +40,12 @@
         "lastname": "elk",
         "password": "omar123456",
         "username": "omar"
+    },
+    {
+        "emailaddress": "test@test.com",
+        "firstname": "david",
+        "lastname": "test",
+        "password": "123456",
+        "username": "david"
     }
 ]
