@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block header %}{{ super () }}{% endblock %}
+{% block content %}
+
+<div>
+
+    {% if username %}
+
+        
+        <h4 ><strong>Name: </strong></h4>{{ firstnamei }} &nbsp; {{ lastnamei }}
+        
+        <h4><strong>Username: </strong></h4>{{ usernamei }}
+
+        {% for post in postsi %}
+         <img src="static/images/{{ post }}" alt="image" width=100% height="200">
+        {% endfor %}
+
+
+    {% else %}
+
+        <p>
+            <h2>You are not logged in</h2>
+            <a href="/login">Click here to log in</a>
+            <a href="/register">Click here to become our new Warrior</a>
+        </p>
+
+    {% endif %}
+</div>
+
+{% endblock %}
