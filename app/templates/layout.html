@@ -26,10 +26,18 @@
                 <div class="navbar-nav mr-auto">
                 </div>
                 <!-- Navbar Right Side -->
-                <div class="navbar-nav">
-                  <a class="nav-item nav-link" href="/posting">Post</a>
-                </div>
+                
+                {% if username %}
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/posting">Post</a>
+                  </div>
+                {% else %}  
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/login">Post</a>
+                  </div>
+                {% endif %}
 
+                
                 {% if username %}
                     <div class="navbar-nav">
                       <li><a class="nav-link" href="/account"><span class="glyphicon glyphicon-user"></span>{{ username }} </a></li>

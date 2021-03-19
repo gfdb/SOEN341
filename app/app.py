@@ -4,7 +4,7 @@
 #code to start application
 from datetime import datetime
 from json import load, dump
-from flask import Flask, render_template, request, url_for, redirect,flash, session
+from flask import Flask, render_template, request, url_for, redirect, flash, session
 from os import path
 from uuid import uuid4
 from forms import CommentForm, Register, Login
@@ -16,6 +16,7 @@ from wtforms.fields.html5 import EmailField
 from wtforms.validators import InputRequired, Email, Length
 
 from wtforms_components import validators
+
 
 
 app = Flask(__name__)
@@ -50,7 +51,7 @@ def timeline():
             dump(posts, all_posts, indent=4, sort_keys=True)
         return redirect(url_for('timeline'))
 
-    return render_template('timeline.html', posts=posts, form = form,username=session.get('username'))
+    return render_template('timeline.html', posts=posts, form = form, username=session.get('username'))
 
 #posting feature
 @app.route("/posting")
@@ -59,10 +60,10 @@ def post():
 
 
 @app.route("/posting", methods=['POST'])
-def image_post():
 
-    #Placeholder name. Will be replaced once user database is implemented.
-    poster_name = "Default"
+def image_post():
+    
+    poster_name = session.get('username')
 
     date = datetime.today().strftime("%d/%m/%Y")
     
@@ -113,7 +114,7 @@ def login():
             flash(username + " is logged in",category='username is logged in')
             return redirect(url_for('timeline'))
         else:
-            flash("Your USERNAME/PASSWORD might be incorrect !" ,category='loginerror')
+            flash("Your USERNAME/PASSWORD might be incorrect!" , category='loginerror')
     return render_template("login.html", form=form, posts=posts)
 
 
