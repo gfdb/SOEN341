@@ -6,7 +6,20 @@
 <article class="media content-section">
   <div class="media-body">
     <div class="article-metadata">
-      <h6 class="mr-2"><b>{{ post.author }}</b></h6>
+      <h6 class="mr-2"><b>&nbsp;<a href="" class="follow-button">{{ post.author }}</a>&nbsp;</b>
+        {% if username %}
+          
+            {% for account in accounts if account['username'] == username %}
+                {% if post.author in account["following"] %}
+                <form method="post" action="" style="display:inline">{{unfollow_form.unfollow_user(value=post.author)}}{{ unfollow_form.hidden_tag() }}<input type="submit" class="btn btn-outline-primary btn-sm ml-1 shadow-none" value="Following"></form>
+                  {% break %}
+                {% endif %}
+                {% if loop.last %}
+                <form method="post" action="" style="display:inline">{{follow_form.follow_user(value=post.author)}}{{ follow_form.hidden_tag() }}<input type="submit" class="btn btn-outline-primary btn-sm ml-1 shadow-none follow-form" value="Follow"></form>
+                {% endif %}
+            {% endfor %}
+        
+        {% endif %}
     </div>
     <img src="static/images/{{ post.image }}" alt="image" width=100% height="400">
     <div class="article-metadata">
@@ -16,9 +29,9 @@
         <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
       </div>
 
-      <h6 class="mr-2"><b>{{ post.author }}</b> {{post.description}}</h6><p></p>
+      <h6 class="mr-2"><b>&nbsp;&nbsp;&nbsp;{{ post.author }}</b>&nbsp;{{post.description}}</h6><p></p>
       {% for comment in post.comments %}
-        <p class="comment-styling"><b>{{ comment['author'] }}</b>&nbsp;&nbsp;{{ comment['comment'] }}</p>
+        <p class="comment-styling"><b>&nbsp;&nbsp;&nbsp;&nbsp;{{ comment['author'] }}</b>&nbsp;&nbsp;{{ comment['comment'] }}</p>
       {% endfor %}
       <form action="" method="post">
         <div class="comment">
@@ -26,7 +39,7 @@
               <div class="d-flex flex-row align-items-start">
                 {{form.comment(class_ = "form-control ml-1 shadow-none textarea")}}
                 {{form.parentID(value = post.uuid)}}
-                {{form.author(value = username)}} <!-- When users are added, this should be the current_user instead of post.author -->
+                {{form.author(value = username)}} 
                 {{ form.hidden_tag() }}
               </div>
               <div class="mt-2 text-right">
