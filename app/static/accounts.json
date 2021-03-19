@@ -2,6 +2,8 @@
     {
         "email": "concordia@a.ca",
         "firstname": "Mohamad",
+        "followers": [],
+        "following": [],
         "lastname": "elchanati",
         "password": "123456789",
         "username": "moham123"
@@ -9,6 +11,8 @@
     {
         "emailaddress": "j",
         "firstname": "j",
+        "followers": [],
+        "following": [],
         "lastname": "s",
         "password": "1",
         "username": "j"
@@ -16,6 +20,8 @@
     {
         "emailaddress": "mm@gmail.com",
         "firstname": "mohamad",
+        "followers": [],
+        "following": [],
         "lastname": "el chanati",
         "password": "mohamad123",
         "username": "mohamad"
@@ -23,6 +29,8 @@
     {
         "emailaddress": "ahmad@123.com",
         "firstname": "ahmad",
+        "followers": [],
+        "following": [],
         "lastname": "ahmad",
         "password": "ahmad123456",
         "username": "ahmad"
@@ -30,6 +38,8 @@
     {
         "emailaddress": "ahmad@123.com",
         "firstname": "ahmad",
+        "followers": [],
+        "following": [],
         "lastname": "ahmad",
         "password": "ahmad123456",
         "username": "ahmad1"
@@ -37,6 +47,8 @@
     {
         "emailaddress": "omar@ss.com",
         "firstname": "omar",
+        "followers": [],
+        "following": [],
         "lastname": "elk",
         "password": "omar123456",
         "username": "omar"
@@ -44,6 +56,13 @@
     {
         "emailaddress": "gdbertucci@gmail.com",
         "firstname": "Gianfranco",
+        "followers": [],
+        "following": [
+            "Mohamad El Chanati",
+            "David Roper",
+            "Franco Dumoulin",
+            "david"
+        ],
         "lastname": "Dumoulin",
         "password": "6969420",
         "username": "gdbertucci"

@@ -7,7 +7,7 @@
   h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
   }
-  
+
   .bg-steel {
     background-color: #21262d;
   }
@@ -40,7 +40,7 @@
   }
   
   a.article-title:hover {
-    color: #428bca;
+    color: white;
     text-decoration: none;
   }
   
@@ -157,4 +157,15 @@
   width: 25px;
   height: 25px;
   border-radius: 25%;
+}
+
+.follow-button {
+  color: white;
+  text-decoration: none;
+}
+
+#follow-form {
+  display:inline;
+  margin:0px;
+  padding:0px;
 }

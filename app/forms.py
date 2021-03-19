@@ -11,8 +11,6 @@ class CommentForm(FlaskForm):
     parentID = HiddenField('uuid')
     author = HiddenField('author')
 
-
-
 class Register(FlaskForm):
     username = StringField('username', validators=[InputRequired()])
     email = EmailField('email', validators=[InputRequired(), Email()])
@@ -21,8 +19,13 @@ class Register(FlaskForm):
     password = PasswordField('password', validators=[InputRequired(), Length(max=18,min=6)])
     #submit = SubmitField('Submit')
 
-
 class Login(FlaskForm):
     username = StringField('username', validators=[InputRequired()])
     password = PasswordField('password', validators=[InputRequired()])
     #submit = SubmitField('Submit')
+
+class Follow(FlaskForm):
+    follow_user = HiddenField('unfollow_user')
+
+class Unfollow(FlaskForm):
+    unfollow_user = HiddenField('follow_user')
