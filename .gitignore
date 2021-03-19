@@ -3,7 +3,5 @@ test.py
 .vscode
 ./vscode
 insta-env
-app/static/images/
 app/__pycache__/
 __pycache__/
-app/static/posts.json
