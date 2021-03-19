@@ -157,7 +157,40 @@ def signup():
     return render_template('signup.html',form=form)
     
 
+# @app.route('/account')
+# def account():
 
+#     return render_template('account.html')
+
+@app.route('/account', methods=['GET','POST'])
+def account():
+    username = session.get('username')
+    myposts = []
+    with open('app/static/accounts.json', 'r') as accounts_file:
+            accounts = load(accounts_file)
+    with open('app/static/posts.json', 'r') as posts_file:
+        posts = load(posts_file)
+    for account in accounts:
+        if username == account['username']:
+
+
+            global usernameinfo
+            usernameinfo = account['username']
+            global firstnameinfo
+            firstnameinfo = account['firstname']
+            global lastnameinfo
+            lastnameinfo = account['lastname']
+            global emailinfo
+            emailinfo = account['emailaddress']
+    
+    for post in posts:
+        if username == post['author']:
+            myposts.append(post['image'])
+
+
+
+    return render_template('account.html', usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
+                           emaili=emailinfo, username=session.get('username'), postsi = myposts)
 
 @app.route('/logout')
 def logout():

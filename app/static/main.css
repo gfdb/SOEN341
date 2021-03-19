@@ -1,11 +1,11 @@
-body {
+  body {
     background: #0d1117;
     color: #333333;
     margin-top: 5rem;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    color: #444444;
+    color: #ffffff;
   }
   
   .bg-steel {
@@ -99,7 +99,8 @@ body {
 
   .date {
     font-size: 11px
-}
+
+  }
 
 .comment-text {
     font-size: 12px
@@ -138,4 +139,22 @@ body {
 
 .white-writing{
   color: aliceblue;
+}
+
+.row::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.column {
+  float: left;
+  padding: 5px;
+}
+
+.avatar{
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  border-radius: 25%;
 }
