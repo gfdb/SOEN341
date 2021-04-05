@@ -7,7 +7,7 @@ from json import load, dump
 from flask import Flask, render_template, request, url_for, redirect, flash, session
 from os import path
 from uuid import uuid4
-from forms import CommentForm, Register, Login, Follow, Unfollow
+from forms import CommentForm, Register, Login, Follow, Unfollow, Like, Unlike
 from flask_wtf import FlaskForm
 
 from wtforms import StringField, PasswordField, SubmitField
@@ -47,12 +47,38 @@ def unfollow(followee, follower):
             with open('app/static/accounts.json', 'w') as all_accounts:
                 dump(accounts, all_accounts, indent=4, sort_keys=True)
 
+def like_post(person_liking, post_uuid):
+    for post in posts:
+        if post['uuid'] == post_uuid:
+            if person_liking not in post['likers']:
+                post['likers'].append(person_liking)
+                break
+            else:
+                break
+    with open('app/static/posts.json', 'w') as all_posts:
+        dump(posts, all_posts, indent=4, sort_keys=True)
+
+def unlike_post(person_unliking, post_uuid):
+    for post in posts:
+        if post['uuid'] == post_uuid:
+            if person_unliking in post['likers']:
+                post['likers'].remove(person_unliking)
+                break
+            else:
+                break
+    with open('app/static/posts.json', 'w') as all_posts:
+        dump(posts, all_posts, indent=4, sort_keys=True)
+
+
+
 @app.route("/", methods=['GET','POST'])
 @app.route("/timeline", methods=['GET','POST'])
 def timeline():
     form = CommentForm(request.form)
     follow_form = Follow(request.form)
     unfollow_form = Unfollow(request.form)
+    like_form = Like(request.form)
+    unlike_form = Unlike(request.form)
     if request.method == 'POST':
         if form.validate_on_submit():
             #get comment posted
@@ -76,7 +102,12 @@ def timeline():
             follow(session.get('username'), request.form.get('follow_user'))
         if 'unfollow_user' in request.form:
             unfollow(session.get('username'), request.form.get('unfollow_user'))
-    return render_template('timeline.html', posts=posts, form = form, username=session.get('username'), accounts=accounts, follow_form=follow_form, unfollow_form=unfollow_form)
+        if 'like_post_uuid' in request.form:
+            print(request.form.get('post_uuid'))
+            like_post(session.get('username'), request.form.get('like_post_uuid'))
+        if 'unlike_post_uuid' in request.form:
+            unlike_post(session.get('username'), request.form.get('unlike_post_uuid'))
+    return render_template('timeline.html', posts=posts, form=form, username=session.get('username'), accounts=accounts, follow_form=follow_form, unfollow_form=unfollow_form, like_form=like_form, unlike_form=unlike_form)
 
 #posting feature
 @app.route("/posting")
@@ -109,6 +140,7 @@ def image_post():
     new_post['image']       = img_file.filename
     new_post['date_posted'] = date
     new_post['comments'] = list()
+    new_post['num_likes'] = 0
 
     with open('app/static/posts.json', 'w') as all_posts:
         posts.insert(0, new_post)
@@ -117,8 +149,7 @@ def image_post():
 
     return redirect(url_for('timeline'))
    
-
-
+   
 
 def valid(username, password):
     with open('app/static/accounts.json', 'r') as accounts_file:
