@@ -11,20 +11,26 @@
           
             {% for account in accounts if account['username'] == username %}
                 {% if post.author in account["following"] %}
-                <form method="post" action="" style="display:inline">{{unfollow_form.unfollow_user(value=post.author)}}{{ unfollow_form.hidden_tag() }}<input type="submit" class="btn btn-outline-primary btn-sm ml-1 shadow-none" value="Following"></form>
+                <form method="post" style="display:inline">{{unfollow_form.unfollow_user(value=post.author)}}{{ unfollow_form.hidden_tag() }}<input type="submit" class="btn btn-outline-primary btn-sm ml-1 shadow-none" value="Following"></form>
                   {% break %}
                 {% endif %}
                 {% if loop.last %}
-                <form method="post" action="" style="display:inline">{{follow_form.follow_user(value=post.author)}}{{ follow_form.hidden_tag() }}<input type="submit" class="btn btn-outline-primary btn-sm ml-1 shadow-none follow-form" value="Follow"></form>
+                <form method="post" style="display:inline">{{follow_form.follow_user(value=post.author)}}{{ follow_form.hidden_tag() }}<input type="submit" class="btn btn-outline-primary btn-sm ml-1 shadow-none follow-form" value="Follow"></form>
                 {% endif %}
             {% endfor %}
         
         {% endif %}
+
+      <h5>{{ post['likers']|length }} Likes</h5>
     </div>
     <img src="static/images/{{ post.image }}" alt="image" width=100% height="400">
     <div class="article-metadata">
       <div class="d-flex flex-row fs-12 comment">
-        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+        {% if username not in post['likers'] %}
+          <form method="post">{{ like_form.like_post_uuid(value=post['uuid']) }}{{ like_form.hidden_tag() }}<input type="submit" class="btn btn-outline-light btn-sm ml-1 shadow-none" value="Like"></form>
+        {% else %}
+          <form method="post">{{ unlike_form.unlike_post_uuid(value=post['uuid']) }}{{ unlike_form.hidden_tag() }}<input type="submit" class="btn btn-outline-danger btn-sm ml-1 shadow-none" value="Unlike"></form>
+        {% endif %}
         <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
         <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
       </div>
