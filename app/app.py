@@ -24,6 +24,14 @@ app = Flask(__name__)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 app.config['SECRET_KEY'] = 'ErenYeager'
 
+@app.route('/swap_mode')
+def swap_mode(mode):
+  print('lmao it works')
+  if mode == 'dark':
+    session['light_dark'] = 'dark'
+  if mode == 'light':
+    session['light_dark'] = 'light'
+
 # load post information from json database
 posts = ''
 with open('app/static/posts.json', 'r') as read_file:
