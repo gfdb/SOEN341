@@ -5,6 +5,9 @@
         "date_posted": "18/03/2021",
         "description": "bam",
         "image": "images copy 2.jpeg",
+        "likers": [
+            "gdbertucci"
+        ],
         "uuid": "472f8763-a42c-42e1-8b9f-a9884fe2c7fa"
     },
     {
@@ -13,6 +16,9 @@
         "date_posted": "18/03/2021",
         "description": "the coin",
         "image": "Heads_Image.jpg",
+        "likers": [
+            "gdbertucci"
+        ],
         "uuid": "ab8791c4-8eab-4033-ba4a-f1f15d5bd3c1"
     },
     {
@@ -21,6 +27,7 @@
         "date_posted": "17/03/2021",
         "description": "central america",
         "image": "central-america-maps.png",
+        "likers": [],
         "uuid": "e17e04c2-45e4-4d70-9d04-834594b7b34a"
     },
     {
@@ -29,6 +36,7 @@
         "date_posted": "17/03/2021",
         "description": "let me in",
         "image": "b21.png",
+        "likers": [],
         "uuid": "29b6e83b-4bef-41ff-9cb6-f49d5ba865d0"
     },
     {
@@ -46,6 +54,9 @@
         "date_posted": "April 20, 2020",
         "description": "nice day at bikini bottom",
         "image": "Spongebob.jpg",
+        "likers": [
+            "gdbertucci"
+        ],
         "uuid": "14a0c8cd-c10e-4953-af81-8d7cfee4b350"
     },
     {
@@ -54,6 +65,7 @@
         "date_posted": "April 21, 2021",
         "description": "e=mc^2",
         "image": "einstein.jpg",
+        "likers": [],
         "uuid": "b8a40d30-f5c7-4a79-aef9-3a270a8af084"
     },
     {
@@ -67,6 +79,7 @@
         "date_posted": "March 25, 2019",
         "description": "Astra lost in space",
         "image": "astra.png",
+        "likers": [],
         "uuid": "f466828c-2df2-46d9-8aa0-e4b5d839e006"
     },
     {
@@ -80,6 +93,7 @@
         "date_posted": "January 20, 2030",
         "description": "I have the biggest swag in bikini bottom",
         "image": "Patrick.png",
+        "likers": [],
         "uuid": "17af790e-7699-4675-97d1-2d542c8924fd"
     },
     {
@@ -88,6 +102,7 @@
         "date_posted": "April 21, 2018",
         "description": "Hello :D",
         "image": "eren.png",
+        "likers": [],
         "uuid": "dd31faa4-ccd8-4ff0-b616-dfc8d2bdfc74"
     }
 ]
