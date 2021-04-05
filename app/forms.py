@@ -29,3 +29,9 @@ class Follow(FlaskForm):
 
 class Unfollow(FlaskForm):
     unfollow_user = HiddenField('follow_user')
+
+class Like(FlaskForm):
+    like_post_uuid = HiddenField('like_post_uuid')
+
+class Unlike(FlaskForm):
+    unlike_post_uuid = HiddenField('unlike_post_uuid')
