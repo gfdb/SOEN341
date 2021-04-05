@@ -1,0 +1,171 @@
+body {
+    background: #ffffff;
+    color: #e6e6e6;
+    margin-top: 5rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+  }
+
+  .bg-steel {
+    background-color: #e6e6e6;
+  }
+  
+  .site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #000000;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+  
+  .content-section {
+    background: #ffffff;
+    padding: 10px 0px;
+    border: 2px solid #e0e0e0;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    width: 28em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .article-title {
+    color: #444444;
+  }
+  
+  a.article-title:hover {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #353535;
+  }
+  
+  .article-metadata a:hover {
+    color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+
+  .col-md-8{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mr-2{
+    color:#000000;;
+  }
+
+  .comment{
+    color:#161616;
+    background: inherit;
+    border-color: #161616;
+  }
+
+  .date {
+    font-size: 11px
+
+  }
+
+.comment-text {
+    font-size: 12px
+}
+
+.fs-12 {
+    font-size: 12px
+}
+
+.shadow-none {
+    box-shadow: none
+}
+
+.name {
+    color:inherit;
+}
+
+.cursor:hover {
+    color:#111111;
+}
+
+.cursor {
+    cursor: pointer
+}
+
+.textarea {
+    resize: none
+}
+.flex-row{
+  background:inherit;
+}
+.comment-styling{
+  color: #000000;
+  font-size: 13px;
+}
+
+.white-writing{
+  color: rgb(14, 21, 27);
+}
+
+.row::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.column {
+  float: left;
+  padding: 5px;
+}
+
+.avatar{
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  border-radius: 25%;
+}
+
+.follow-button {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+#follow-form {
+  display:inline;
+  margin:0px;
+  padding:0px;
+}
