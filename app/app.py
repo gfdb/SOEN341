@@ -15,6 +15,7 @@ from wtforms.validators import DataRequired
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import InputRequired, Email, Length
 from jinja2 import Environment
+import json
 
 from wtforms_components import validators
 jinja_env = Environment()
@@ -170,14 +171,27 @@ def signup():
             with open('app/static/accounts.json', 'w') as all_accounts:
                 dump(accounts, all_accounts, indent=4, sort_keys=True)
 
+            new_profile_pic = {'username' : form.username.data, 'pic_URl' : 'Avatar.png'}
+
+            with open('app/static/profile_pic.json', 'r') as pics:
+                all_profile_pics = load(pics)
+                
+
+            all_profile_pics.append(new_profile_pic)
+            
+            with open('app/static/profile_pic.json', 'w') as all_pics:
+                dump(all_profile_pics, all_pics, indent=4, sort_keys=True)
+                all_pics.close
+                
+
+
+            
+
             return redirect(url_for('login')) 
     return render_template('signup.html',form=form)
     
 
-# @app.route('/account')
-# def account():
 
-#     return render_template('account.html')
 
 def get_num_followers(username):
     for account in accounts:
@@ -188,10 +202,12 @@ def get_num_following(username):
         if account['username'] == session.get('username'):
             return len(account['following'])
 
-@app.route('/account', methods=['GET','POST'])
+@app.route('/account', methods=['POST','GET'])
 def account():
     username = session.get('username')
     myposts = []
+    mypics = {}
+    pic_name = ''
     with open('app/static/accounts.json', 'r') as accounts_file:
             accounts = load(accounts_file)
     with open('app/static/posts.json', 'r') as posts_file:
@@ -213,15 +229,70 @@ def account():
         if username == post['author']:
             myposts.append(post['image'])
 
+    
+    with open('app/static/profile_pic.json', 'r') as profile_pics:
+        pics = load(profile_pics)
+    
+        for pic in pics:
+            if pic['username'] == session.get('username'):
+                pic_name = pic['pic_URl']
+    #------------------------
 
+    
 
-    return render_template('account.html', usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
-                           emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')))
+        if request.method == 'POST':
+            print("if st is working")
+            img_f = request.files['img']
+
+            if img_f.filename == "":
+                print("No file selected")
+                return redirect(url_for('account'))
+
+            
+
+            file_path = path.join(app.root_path, 'static/images', img_f.filename)
+            img_f.save(file_path)
+            print("Image is  saved")
+
+            new_profile_pic = {}
+            new_profile_pic['username'] = session.get('username')
+            new_profile_pic['pic_URl']   = img_f.filename
+
+            with open('app/static/profile_pic.json', 'r') as profile_pics:
+                pics = load(profile_pics)
+
+            
+            with open('app/static/profile_pic.json', 'w') as all_pics:
+
+                for pic in pics:
+                    if pic['username'] == session.get('username'):
+                        pic['pic_URl'] = img_f.filename
+                        
+                        
+
+                        dump(pics, all_pics, indent=4, sort_keys=True)
+                        all_pics.close()
+                        
+                        
+                   
+             
+                          
+
+            return redirect(url_for('account'))
+
+        return render_template('account.html', mypicsi=pic_name,usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
+                    emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')))
 
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('timeline'))
+
+
+
+
+    
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
