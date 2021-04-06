@@ -8,7 +8,7 @@
 
    <div>  
         <form method="POST" action="" enctype="multipart/form-data" >
-            <label>         
+            <label>         <!-- this will make the file input hidden under the user profile picture-->
                 <img src="static/images/{{ mypicsi }}" alt="Avatar" style="border-radius: 50%;" height="75px" width="75px">
                 <input type="file" name="img"  accept=".png,.jpg"  style="display:none" onchange=" this.form.submit()">     
             </label>
