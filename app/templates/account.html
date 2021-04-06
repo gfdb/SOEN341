@@ -6,7 +6,14 @@
 
     {% if username %}
 
-   <div> <img src="static/images/Avatar.png" alt="Avatar" style="border-radius: 50%;" height="75px" width="75px"></div>  
+   <div>  
+        <form method="POST" action="" enctype="multipart/form-data" >
+            <label>         <!-- this will make the file input hidden under the user profile picture-->
+                <img src="static/images/{{ mypicsi }}" alt="Avatar" style="border-radius: 50%;" height="75px" width="75px">
+                <input type="file" name="img"  accept=".png,.jpg"  style="display:none" onchange=" this.form.submit()">     
+            </label>
+        </form>
+    </div>  
 
     <div class = "white-writing"> <p class = "white-writing"><span style="font-size: x-large;"><strong>Name:</strong></span> &nbsp; {{ firstnamei }}  {{ lastnamei }}</p>
         
