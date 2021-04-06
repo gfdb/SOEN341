@@ -120,5 +120,14 @@
         "lastname": "test",
         "password": "123456",
         "username": "finalfinaltest"
+    },
+    {
+        "emailaddress": "this@is.test",
+        "firstname": "franco yes",
+        "followers": [],
+        "following": [],
+        "lastname": "test",
+        "password": "123456",
+        "username": "lasttest"
     }
 ]
