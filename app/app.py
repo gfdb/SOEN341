@@ -197,6 +197,7 @@ def signup():
                 'following': []
             }
             
+            #from here, a default user profile picture (Avatar.png) will be added to all new users
             accounts.append(new_account)
             with open('app/static/accounts.json', 'w') as all_accounts:
                 dump(accounts, all_accounts, indent=4, sort_keys=True)
@@ -208,7 +209,7 @@ def signup():
                 
             all_profile_pics.append(new_profile_pic)
             with open('app/static/profile_pic.json', 'w') as all_pics:
-                dump(all_profile_pics, all_pics, indent=4, sort_keys=True)
+                dump(all_profile_pics, all_pics, indent=4, sort_keys=True) #saving the user profile picture to the user indicated in profile_pic.json
                 all_pics.close
                 
             return redirect(url_for('login')) 
@@ -259,34 +260,32 @@ def account():
         for pic in pics:
             if pic['username'] == session.get('username'):
                 pic_name = pic['pic_URl']
-    #------------------------
 
+    #getting and returning the user profile picture for the user in the session
         if request.method == 'POST':
-            print("if st is working")
             img_f = request.files['img']
 
             if img_f.filename == "":
-                print("No file selected")
                 return redirect(url_for('account'))
 
-            file_path = path.join(app.root_path, 'static/images', img_f.filename)
+            file_path = path.join(app.root_path, 'static/images', img_f.filename) #getting the user profile picture name and filename
             img_f.save(file_path)
-            print("Image is  saved")
+            
 
-            new_profile_pic = {}
+            new_profile_pic = {} #creating a new dictionary to save the new user profile picture
             new_profile_pic['username'] = session.get('username')
             new_profile_pic['pic_URl']   = img_f.filename
 
             with open('app/static/profile_pic.json', 'r') as profile_pics:
                 pics = load(profile_pics)
 
-            with open('app/static/profile_pic.json', 'w') as all_pics:
+            with open('app/static/profile_pic.json', 'w') as all_pics: #replaccing the old user profile picture with the new user profile picture
                 for pic in pics:
                     if pic['username'] == session.get('username'):
                         pic['pic_URl'] = img_f.filename
                         dump(pics, all_pics, indent=4, sort_keys=True)
                         all_pics.close()
-            return redirect(url_for('account'))
+            return redirect(url_for('account')) #redirect to account function to load the new user profile picture in account.html
 
         return render_template('account.html', mypicsi=pic_name,usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
                     emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')))
