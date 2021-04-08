@@ -18,7 +18,7 @@ from jinja2 import Environment
 import json
 
 from wtforms_components import validators
-jinja_env = Environment()
+jinja_env = Environment() 
 
 
 app = Flask(__name__)
