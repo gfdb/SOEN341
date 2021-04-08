@@ -7,8 +7,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  {% if color_theme == 'light' %}
+    <link id="styling" rel="stylesheet" type="text/css" href="/static/light.css">
+  {% else %}
     <link id="styling" rel="stylesheet" type="text/css" href="/static/main.css">
+  {% endif %}
         <title>Concordiagram</title>
     
     
@@ -53,8 +56,11 @@
                       <a class="nav-item nav-link" href="/register">Signup</a>
                     </div>
                 {% endif %}
-                <button onclick="swapStylesheetdark();" type="button" class="btn btn-dark">Dark</button>
-                <button onclick="swapStylesheetlight();" type="button" class="btn btn-light">Light</button>
+                {% if color_theme == 'light' %}
+                  <form method="post" action="" style="display:inline">{{color_mode_form.color_mode(value='dark')}}{{ color_mode_form.hidden_tag() }}<button onclick="" type="submit" class="btn btn-dark">Dark</button></form>
+                {% else %}
+                  <form method="post" action="" style="display:inline">{{color_mode_form.color_mode(value='light')}}{{ color_mode_form.hidden_tag() }}<button onclick="" type="sbumit" class="btn btn-light">Light</button></form>
+                {% endif %}
               </div>
             </div>
           </nav>
