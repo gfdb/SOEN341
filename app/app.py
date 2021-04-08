@@ -16,7 +16,7 @@ from wtforms.fields.html5 import EmailField
 from wtforms.validators import InputRequired, Email, Length
 
 from wtforms_components import validators
-
+test = "test"
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'ErenYeager'
