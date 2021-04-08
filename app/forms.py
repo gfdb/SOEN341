@@ -29,3 +29,6 @@ class Follow(FlaskForm):
 
 class Unfollow(FlaskForm):
     unfollow_user = HiddenField('follow_user')
+
+class Colormode(FlaskForm):
+    color_mode = HiddenField('color_mode')
