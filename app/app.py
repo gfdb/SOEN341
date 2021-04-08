@@ -7,7 +7,7 @@ from json import load, dump
 from flask import Flask, render_template, request, url_for, redirect, flash, session
 from os import path
 from uuid import uuid4
-from forms import CommentForm, Register, Login, Follow, Unfollow
+from forms import CommentForm, Register, Login, Follow, Unfollow, Colormode
 from flask_wtf import FlaskForm
 
 from wtforms import StringField, PasswordField, SubmitField
@@ -24,14 +24,6 @@ app = Flask(__name__)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 app.config['SECRET_KEY'] = 'ErenYeager'
 
-@app.route('/swap_mode')
-def swap_mode(mode):
-  print('lmao it works')
-  if mode == 'dark':
-    session['light_dark'] = 'dark'
-  if mode == 'light':
-    session['light_dark'] = 'light'
-
 # load post information from json database
 posts = ''
 with open('app/static/posts.json', 'r') as read_file:
@@ -40,6 +32,17 @@ with open('app/static/posts.json', 'r') as read_file:
 accounts = ''
 with open('app/static/accounts.json', 'r') as read_accounts:
     accounts = load(read_accounts)
+
+def swap_theme(page):
+    if session.get('color_theme'):
+        if session.get('color_theme') == 'dark':
+            session['color_theme'] = 'light'
+            return redirect(url_for(page))
+        if session.get('color_theme') == 'light':
+            session['color_theme'] = 'dark'
+            return redirect(url_for(page))
+    session['color_theme'] = 'light'
+    return redirect(url_for(page))
 
 def follow(followee, follower):
     for account in accounts:
@@ -61,6 +64,7 @@ def timeline():
     form = CommentForm(request.form)
     follow_form = Follow(request.form)
     unfollow_form = Unfollow(request.form)
+    color_mode_form = Colormode(request.form)
     if request.method == 'POST':
         if form.validate_on_submit():
             #get comment posted
@@ -84,18 +88,26 @@ def timeline():
             follow(session.get('username'), request.form.get('follow_user'))
         if 'unfollow_user' in request.form:
             unfollow(session.get('username'), request.form.get('unfollow_user'))
-    return render_template('timeline.html', posts=posts, form = form, username=session.get('username'), accounts=accounts, follow_form=follow_form, unfollow_form=unfollow_form)
+        if 'like_post_uuid' in request.form:
+            like_post(session.get('username'), request.form.get('like_post_uuid'))
+        if 'unlike_post_uuid' in request.form:
+            unlike_post(session.get('username'), request.form.get('unlike_post_uuid'))
+        if 'color_mode' in request.form:
+            swap_theme('timeline')
+    return render_template('timeline.html', posts=posts, form=form, username=session.get('username'), accounts=accounts, follow_form=follow_form, unfollow_form=unfollow_form, color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
 
 #posting feature
-@app.route("/posting")
+@app.route("/posting", methods=['GET', 'POST'])
 def post():
-    return render_template('posting.html', posts=posts, username=session.get('username'))
+    color_mode_form = Colormode(request.form)
+    if request.method == 'POST':
+        if 'color_mode' in request.form:
+                swap_theme('post')
+    return render_template('posting.html', posts=posts, username=session.get('username'), color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
 
 
 @app.route("/posting", methods=['POST'])
-
 def image_post():
-    
     poster_name = session.get('username')
 
     date = datetime.today().strftime("%d/%m/%Y")
@@ -117,6 +129,7 @@ def image_post():
     new_post['image']       = img_file.filename
     new_post['date_posted'] = date
     new_post['comments'] = list()
+    new_post['num_likes'] = 0
 
     with open('app/static/posts.json', 'w') as all_posts:
         posts.insert(0, new_post)
@@ -140,6 +153,10 @@ def valid(username, password):
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     form = Login()
+    color_mode_form = Colormode(request.form)
+    if request.method == 'POST':
+        if 'color_mode' in request.form:
+                swap_theme('login')
     if form.validate_on_submit():
         if valid(form.username.data, form.password.data):
             username = form.username.data
@@ -148,11 +165,15 @@ def login():
             return redirect(url_for('timeline'))
         else:
             flash("Your USERNAME/PASSWORD might be incorrect!" , category='loginerror')
-    return render_template("login.html", form=form, posts=posts)
+    return render_template("login.html", form=form, posts=posts, color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
 
 @app.route("/register",methods=['POST','GET'])
 def signup():
     form = Register()
+    color_mode_form = Colormode(request.form)
+    if request.method == 'POST':
+        if 'color_mode' in request.form:
+                swap_theme('signup')
     if request.method == 'POST':
         if form.validate_on_submit():
             with open('app/static/accounts.json', 'r') as accounts_file:
@@ -179,13 +200,8 @@ def signup():
                 dump(accounts, all_accounts, indent=4, sort_keys=True)
 
             return redirect(url_for('login')) 
-    return render_template('signup.html',form=form)
+    return render_template('signup.html',form=form, color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
     
-
-# @app.route('/account')
-# def account():
-
-#     return render_template('account.html')
 
 def get_num_followers(username):
     for account in accounts:
@@ -198,6 +214,10 @@ def get_num_following(username):
 
 @app.route('/account', methods=['GET','POST'])
 def account():
+    color_mode_form = Colormode(request.form)
+    if request.method == 'POST':
+        if 'color_mode' in request.form:
+                swap_theme('account')
     username = session.get('username')
     myposts = []
     with open('app/static/accounts.json', 'r') as accounts_file:
@@ -224,7 +244,7 @@ def account():
 
 
     return render_template('account.html', usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
-                           emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')))
+                           emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')), color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
 
 @app.route('/logout')
 def logout():
