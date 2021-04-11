@@ -18,5 +18,9 @@
     {
         "pic_URl": "img_avatar.png",
         "username": "lasttest"
+    },
+    {
+        "pic_URl": "Avatar.png",
+        "username": "admin"
     }
 ]

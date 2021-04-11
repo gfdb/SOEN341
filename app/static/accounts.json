@@ -129,5 +129,14 @@
         "lastname": "test",
         "password": "123456",
         "username": "lasttest"
+    },
+    {
+        "emailaddress": "admin@gmail.com",
+        "firstname": "admin",
+        "followers": [],
+        "following": [],
+        "lastname": "admin",
+        "password": "admin123",
+        "username": "admin"
     }
 ]
