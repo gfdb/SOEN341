@@ -89,12 +89,9 @@ def timeline():
     form = CommentForm(request.form)
     follow_form = Follow(request.form)
     unfollow_form = Unfollow(request.form)
-<<<<<<< HEAD
-    color_mode_form = Colormode(request.form)
-=======
     like_form = Like(request.form)
     unlike_form = Unlike(request.form)
->>>>>>> 021ab9c799670bcb462dade0ed133ac2c7826f4e
+    color_mode_form = Colormode(request.form)
     if request.method == 'POST':
         if form.validate_on_submit():
             #get comment posted
@@ -114,25 +111,18 @@ def timeline():
                 with open('app/static/posts.json', 'w') as all_posts:
                     dump(posts, all_posts, indent=4, sort_keys=True)
             return redirect(url_for('timeline'))
+            
         if 'follow_user' in request.form:
             follow(session.get('username'), request.form.get('follow_user'))
         if 'unfollow_user' in request.form:
             unfollow(session.get('username'), request.form.get('unfollow_user'))
         if 'like_post_uuid' in request.form:
-<<<<<<< HEAD
             like_post(session.get('username'), request.form.get('like_post_uuid'))
         if 'unlike_post_uuid' in request.form:
             unlike_post(session.get('username'), request.form.get('unlike_post_uuid'))
         if 'color_mode' in request.form:
             swap_theme('timeline')
-    return render_template('timeline.html', posts=posts, form=form, username=session.get('username'), accounts=accounts, follow_form=follow_form, unfollow_form=unfollow_form, color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
-=======
-            print(request.form.get('post_uuid'))
-            like_post(session.get('username'), request.form.get('like_post_uuid'))
-        if 'unlike_post_uuid' in request.form:
-            unlike_post(session.get('username'), request.form.get('unlike_post_uuid'))
-    return render_template('timeline.html', posts=posts, form=form, username=session.get('username'), accounts=accounts, follow_form=follow_form, unfollow_form=unfollow_form, like_form=like_form, unlike_form=unlike_form)
->>>>>>> 021ab9c799670bcb462dade0ed133ac2c7826f4e
+    return render_template('timeline.html', posts=posts, form=form, username=session.get('username'), accounts=accounts, follow_form=follow_form, unfollow_form=unfollow_form, like_form=like_form, unlike_form=unlike_form, color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
 
 #posting feature
 @app.route("/posting", methods=['GET', 'POST'])
@@ -250,11 +240,6 @@ def signup():
     return render_template('signup.html',form=form, color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
     
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 021ab9c799670bcb462dade0ed133ac2c7826f4e
 def get_num_followers(username):
     for account in accounts:
         if account['username'] == session.get('username'):
@@ -317,10 +302,6 @@ def account():
             new_profile_pic['username'] = session.get('username')
             new_profile_pic['pic_URl']   = img_f.filename
 
-<<<<<<< HEAD
-    return render_template('account.html', usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
-                           emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')), color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
-=======
             with open('app/static/profile_pic.json', 'r') as profile_pics:
                 pics = load(profile_pics)
 
@@ -333,8 +314,7 @@ def account():
             return redirect(url_for('account')) #redirect to account function to load the new user profile picture in account.html
 
         return render_template('account.html', mypicsi=pic_name,usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
-                    emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')))
->>>>>>> 021ab9c799670bcb462dade0ed133ac2c7826f4e
+                    emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')), color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
 
 @app.route('/logout')
 def logout():
