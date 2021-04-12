@@ -29,7 +29,7 @@
     <div class="article-metadata">
       <div class="d-flex flex-row fs-12 comment">
         {% if username not in post['likers'] %}
-          <form method="post">{{ like_form.like_post_uuid(value=post['uuid']) }}{{ like_form.hidden_tag() }}<input type="submit" class="btn btn-outline-light btn-sm ml-1 shadow-none" value="Like"></form>
+          <form method="post">{{ like_form.like_post_uuid(value=post['uuid']) }}{{ like_form.hidden_tag() }}<input type="submit" class="btn btn-outline-{% if color_theme == 'light'%}dark{% else %}light{% endif %} btn-sm ml-1 shadow-none" value="Like"></form>
         {% else %}
           <form method="post">{{ unlike_form.unlike_post_uuid(value=post['uuid']) }}{{ unlike_form.hidden_tag() }}<input type="submit" class="btn btn-outline-danger btn-sm ml-1 shadow-none" value="Unlike"></form>
         {% endif %}
