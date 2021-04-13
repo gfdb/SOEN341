@@ -188,7 +188,7 @@ def login():
             flash(username + " is logged in",category='username is logged in')
             return redirect(url_for('timeline'))
         else:
-            flash("Your USERNAME/PASSWORD might be incorrect!" , category='loginerror')
+            flash("The username or password you entered is incorrect." , category='loginerror')
     return render_template("login.html", form=form, posts=posts, color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
 
 @app.route("/register",methods=['POST','GET'])
@@ -204,7 +204,7 @@ def signup():
                 accounts = load(accounts_file)
             for account in accounts:
                 if form.username.data == account['username']:
-                    flash("This username was taken. Please try again" ,category='username_error')
+                    flash("This username is taken. Please try again", category='username_error')
                     return redirect(url_for("signup"))
 
 
@@ -215,23 +215,14 @@ def signup():
                 'username': form.username.data,
                 'password': form.password.data,
                 'followers': [],
-                'following': []
+                'following': [],
+                'profile_pic': 'avatar.png'
             }
             
             #from here, a default user profile picture (Avatar.png) will be added to all new users
             accounts.append(new_account)
             with open('app/static/accounts.json', 'w') as all_accounts:
                 dump(accounts, all_accounts, indent=4, sort_keys=True)
-
-            new_profile_pic = {'username' : form.username.data, 'pic_URl' : 'Avatar.png'}
-
-            with open('app/static/profile_pic.json', 'r') as pics:
-                all_profile_pics = load(pics)
-                
-            all_profile_pics.append(new_profile_pic)
-            with open('app/static/profile_pic.json', 'w') as all_pics:
-                dump(all_profile_pics, all_pics, indent=4, sort_keys=True) #saving the user profile picture to the user indicated in profile_pic.json
-                all_pics.close
                 
             return redirect(url_for('login')) 
     return render_template('signup.html',form=form, color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
@@ -239,12 +230,29 @@ def signup():
 
 def get_num_followers(username):
     for account in accounts:
-        if account['username'] == session.get('username'):
+        if account['username'] == username:
             return len(account['followers'])
 def get_num_following(username):
     for account in accounts:
-        if account['username'] == session.get('username'):
+        if account['username'] == username:
             return len(account['following'])
+def get_profile_pic(username):
+    with open('app/static/accounts.json', 'r') as accounts_file:
+            accounts = load(accounts_file)
+    for account in accounts:
+        if account['username'] == username:
+            return account['profile_pic']
+def set_profile_pic(username, profile_pic):
+    with open('app/static/accounts.json', 'r') as accounts_file:
+            accounts = load(accounts_file)
+    for account in accounts:
+        if account['username'] == username:
+            account['profile_pic'] = profile_pic
+    with open('app/static/accounts.json', 'w') as acc:
+        dump(accounts, acc, indent=4, sort_keys=True)
+                
+            
+
 
 @app.route('/account', methods=['POST','GET'])
 def account():
@@ -277,40 +285,26 @@ def account():
             myposts.append(post['image'])
 
     
-    with open('app/static/profile_pic.json', 'r') as profile_pics:
-        pics = load(profile_pics)
-    
-        for pic in pics:
-            if pic['username'] == session.get('username'):
-                pic_name = pic['pic_URl']
+    pic_name = get_profile_pic(session.get('username'))
+
 
     #getting and returning the user profile picture for the user in the session
-        if request.method == 'POST':
-            img_f = request.files['img']
+    if request.method == 'POST':
+        img_f = request.files['img']
 
-            if img_f.filename == "":
-                return redirect(url_for('account'))
+        if img_f.filename == "":
+            return redirect(url_for('account'))
 
-            file_path = path.join(app.root_path, 'static/images', img_f.filename) #getting the user profile picture name and filename
-            img_f.save(file_path)
-            
+        #getting the user profile picture name and filename
+        file_path = path.join(app.root_path, 'static/images', img_f.filename) 
+        img_f.save(file_path)
+        
+        set_profile_pic(session.get('username'), img_f.filename)
 
-            new_profile_pic = {} #creating a new dictionary to save the new user profile picture
-            new_profile_pic['username'] = session.get('username')
-            new_profile_pic['pic_URl']   = img_f.filename
+        #redirect to account function to load the new user profile picture in account.html
+        return redirect(url_for('account')) 
 
-            with open('app/static/profile_pic.json', 'r') as profile_pics:
-                pics = load(profile_pics)
-
-            with open('app/static/profile_pic.json', 'w') as all_pics: #replaccing the old user profile picture with the new user profile picture
-                for pic in pics:
-                    if pic['username'] == session.get('username'):
-                        pic['pic_URl'] = img_f.filename
-                        dump(pics, all_pics, indent=4, sort_keys=True)
-                        all_pics.close()
-            return redirect(url_for('account')) #redirect to account function to load the new user profile picture in account.html
-
-        return render_template('account.html', mypicsi=pic_name,usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
+    return render_template('account.html', mypicsi=pic_name,usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
                     emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')), color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
 
 @app.route('/logout')
