@@ -125,47 +125,44 @@ def timeline():
     return render_template('timeline.html', posts=posts, form=form, username=session.get('username'), accounts=accounts, follow_form=follow_form, unfollow_form=unfollow_form, like_form=like_form, unlike_form=unlike_form, color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
 
 #posting feature
-@app.route("/posting", methods=['GET', 'POST'])
-def post():
+
+
+@app.route("/posting", methods=['GET','POST'])
+def image_post():
     color_mode_form = Colormode(request.form)
     if request.method == 'POST':
         if 'color_mode' in request.form:
-                swap_theme('post')
+            swap_theme('image_post')
+        elif 'description' in request.form:
+            poster_name = session.get('username')
+            date = datetime.today().strftime("%d/%m/%Y")
+            
+            img_file = request.files['file']
+            description = request.form['description']
+
+            if img_file.filename == "":
+                print("No file selected")
+                return redirect(url_for('image_post'))
+
+            file_path = path.join(app.root_path, 'static/images', img_file.filename)
+            img_file.save(file_path)
+
+            new_post = {}
+            new_post['uuid'] = str(uuid4())
+            new_post['author']      = poster_name
+            new_post['description'] = description
+            new_post['image']       = img_file.filename
+            new_post['date_posted'] = date
+            new_post['comments'] = list()
+            new_post['likers'] = []
+
+            with open('app/static/posts.json', 'w') as all_posts:
+                posts.insert(0, new_post)
+                dump(posts, all_posts, indent=4, sort_keys=True)
+                all_posts.close()
+
+            return redirect(url_for('timeline'))
     return render_template('posting.html', posts=posts, username=session.get('username'), color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
-
-
-@app.route("/posting", methods=['POST'])
-def image_post():
-    poster_name = session.get('username')
-
-    date = datetime.today().strftime("%d/%m/%Y")
-    
-    img_file = request.files['file']
-    description = request.form['description']
-
-    if img_file.filename == "":
-        print("No file selected")
-        return redirect(url_for('post'))
-
-    file_path = path.join(app.root_path, 'static/images', img_file.filename)
-    img_file.save(file_path)
-
-    new_post = {}
-    new_post['uuid'] = str(uuid4())
-    new_post['author']      = poster_name
-    new_post['description'] = description
-    new_post['image']       = img_file.filename
-    new_post['date_posted'] = date
-    new_post['comments'] = list()
-    new_post['num_likes'] = 0
-
-    with open('app/static/posts.json', 'w') as all_posts:
-        posts.insert(0, new_post)
-        dump(posts, all_posts, indent=4, sort_keys=True)
-        all_posts.close()
-
-    return redirect(url_for('timeline'))
-   
    
 
 def valid(username, password):
