@@ -246,10 +246,11 @@ body {
 /* The Close Button */
 .close {
   position: absolute;
-  top: 15px;
-  right: 35px;
+  float: left;
+  top: 180px;
+  left: 725px;
   color: #f1f1f1;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
   transition: 0.3s;
 }
