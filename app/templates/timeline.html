@@ -25,19 +25,20 @@
       <div style="font-size:12px;float:right">{{ post['likers']|length }} Likes</div>
     </div>
 
-    <img src="static/images/{{ post.image }}" alt="image" width=100% height="400">
+    <img style="margin-bottom:10px;" src="static/images/{{ post.image }}" alt="image" width=100% height="400">
     <div class="article-metadata">
-      <div class="d-flex flex-row fs-12 comment">
+    {% if username %}
+      <div style="margin-bottom:10px;" class="d-flex flex-row fs-12 comment">
         {% if username not in post['likers'] %}
-          <form method="post">{{ like_form.like_post_uuid(value=post['uuid']) }}{{ like_form.hidden_tag() }}<input type="submit" class="btn btn-outline-light btn-sm ml-1 shadow-none" value="Like"></form>
+          <form method="post">{{ like_form.like_post_uuid(value=post['uuid']) }}{{ like_form.hidden_tag() }}<input type="submit" class="btn btn-outline-{% if color_theme == 'light'%}dark{% else %}light{% endif %} btn-sm ml-1 shadow-none" value="Like"></form>
         {% else %}
           <form method="post">{{ unlike_form.unlike_post_uuid(value=post['uuid']) }}{{ unlike_form.hidden_tag() }}<input type="submit" class="btn btn-outline-danger btn-sm ml-1 shadow-none" value="Unlike"></form>
         {% endif %}
-        <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
-        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+        <input style="margin-left: 5px;" type="submit" class="btn btn-outline-{% if color_theme == 'light'%}dark{% else %}light{% endif %} btn-sm ml-1 shadow-none" value="Comment">
       </div>
+    {% endif %}
 
-      <h6 class="mr-2"><b>&nbsp;&nbsp;&nbsp;{{ post.author }}</b>&nbsp;{{post.description}}</h6><p></p>
+      <h6 class="mr-2"><b>&nbsp;{{ post.author }}</b>&nbsp;{{post.description}}</h6><p></p>
       {% for comment in post.comments %}
         <p class="comment-styling"><b>&nbsp;&nbsp;&nbsp;&nbsp;{{ comment['author'] }}</b>&nbsp;&nbsp;{{ comment['comment'] }}</p>
       {% endfor %}

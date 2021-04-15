@@ -8,7 +8,7 @@
 <form action="/register" method="POST">
 
     <p>
-       <h2 class='white-writing'>Thinking of joining us ?</h2>
+       <h2 class='white-writing'>Sign Up</h2>
     </p>
     <label class='white-writing'>Please enter your first name</label>
     <!--<input type = "text" name="firstname"/>-->
@@ -22,7 +22,7 @@
     <label class='white-writing'>Please enter your Email address</label>
         {{form.email}}
     <br/>
-    <label class='white-writing'>Please enter the user name you want to use</label>
+    <label class='white-writing'>Please enter the username you want to use</label>
         {{form.username}}
     <br/>
     {% with messages = get_flashed_messages(category_filter=["username_error"]) %}

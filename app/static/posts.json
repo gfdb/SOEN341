@@ -1,10 +1,20 @@
 [
     {
+        "author": "gdbertucci",
+        "comments": [],
+        "date_posted": "12/04/2021",
+        "description": "frank and dean",
+        "image": "frankANDdean.jpg",
+        "likers": [],
+        "uuid": "97e300bd-ef02-4d61-ad61-707deb4bfa06"
+    },
+    {
         "author": "melch",
         "comments": [],
         "date_posted": "04/04/2021",
         "description": "this is a test",
         "image": "img_avatar.png",
+        "likers": [],
         "uuid": "b5e6350e-c9a0-41d8-a453-890f2727e7cf"
     },
     {
@@ -48,14 +58,14 @@
         "uuid": "29b6e83b-4bef-41ff-9cb6-f49d5ba865d0"
     },
     {
-        "author": "Franco Dumoulin",
+        "author": "gdbertucci",
         "comments": [
             {
-                "author": "Franco Dumoulin",
+                "author": "gdbertucci",
                 "comment": "This looks like a great picture!"
             },
             {
-                "author": "Franco Dumoulin",
+                "author": "gdbertucci",
                 "comment": "spongebob!"
             }
         ],
@@ -96,6 +106,10 @@
             {
                 "author": "David Roper",
                 "comment": "cool!"
+            },
+            {
+                "author": "gdbertucci",
+                "comment": "nice pic"
             }
         ],
         "date_posted": "January 20, 2030",

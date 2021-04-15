@@ -3,5 +3,7 @@ test.py
 .vscode
 ./vscode
 insta-env
-app/__pycache__/
-__pycache__/
+app/__pycache__
+__pycache__
+.pytest_cache
+
