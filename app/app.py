@@ -290,19 +290,21 @@ def account():
 
     #getting and returning the user profile picture for the user in the session
     if request.method == 'POST':
-        img_f = request.files['img']
+        if 'img' in request.files:
 
-        if img_f.filename == "":
-            return redirect(url_for('account'))
+            img_f = request.files['img']
 
-        #getting the user profile picture name and filename
-        file_path = path.join(app.root_path, 'static/images', img_f.filename) 
-        img_f.save(file_path)
-        
-        set_profile_pic(session.get('username'), img_f.filename)
+            if img_f.filename == "":
+                return redirect(url_for('account'))
 
-        #redirect to account function to load the new user profile picture in account.html
-        return redirect(url_for('account')) 
+            #getting the user profile picture name and filename
+            file_path = path.join(app.root_path, 'static/images', img_f.filename) 
+            img_f.save(file_path)
+            
+            set_profile_pic(session.get('username'), img_f.filename)
+
+            #redirect to account function to load the new user profile picture in account.html
+            return redirect(url_for('account')) 
 
     return render_template('account.html', mypicsi=pic_name,usernamei=usernameinfo, firstnamei=firstnameinfo, lastnamei=lastnameinfo,
                     emaili=emailinfo, username=session.get('username'), postsi = myposts, num_followers=get_num_followers(session.get('username')), num_following=get_num_following(session.get('username')), color_mode_form=color_mode_form, color_theme=session.get('color_theme'))
