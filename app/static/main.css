@@ -170,22 +170,7 @@
   padding:0px;
 }
 /*CSS for modal image box*/
-/* #myImg {
 
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#myImg:hover {opacity: 0.7;}
-
-
-#myImg2 {
-
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
 
 #myImg2:hover {opacity: 0.7;} */
 
@@ -194,13 +179,11 @@
   display: none; /* Hidden by default */
   position: absolute; /* Stay in place */
   float:left;
-  left: 50%;
-  top: 50%;
+  left: 50% !important;
+  top: 50% !important;
   transform: translate(-50%, -50%);
   z-index: 1; /* Sit on top */
-  padding-top: 200px; /* Location of the box */
-  /* left: 400;
-  top: 400; */
+  padding-top: 100px; /* Location of the box */
   text-align: center;
   width: 800px !important; /* Full width */
   height: 800px !important; /* Full height */
@@ -214,12 +197,16 @@
   text-align: center;
   margin: auto;
   display: block;
+  top: 100px;
+  /* left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%); */
   width: 80%;
   max-width: 700px;
 }
 
-/* Caption of Modal Image
-#caption {
+/* Caption of Modal Image */
+/* #caption {
   margin: auto;
   display: block;
   width: 80%;
@@ -253,10 +240,11 @@
 .close {
   position: absolute;
   float: left;
-  top: 180px;
-  left: 725px;
+  z-index: 2;
+  top: 80px;
+  left: 925px;
   color: #f1f1f1;
-  font-size: 50px;
+  font-size: 100px;
   font-weight: bold;
   transition: 0.3s;
 }
