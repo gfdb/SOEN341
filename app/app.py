@@ -9,6 +9,7 @@ from os import path
 from uuid import uuid4
 from forms import CommentForm, Register, Login, Follow, Unfollow, Like, Unlike, Colormode
 from flask_wtf import FlaskForm
+from flask_bcrypt import Bcrypt
 
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
@@ -22,6 +23,7 @@ jinja_env = Environment()
 
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 app.config['SECRET_KEY'] = 'ErenYeager'
 
@@ -169,7 +171,7 @@ def valid(username, password):
     with open('app/static/accounts.json', 'r') as accounts_file:
                 accounts = load(accounts_file)
     for account in accounts:
-        if username == account['username'] and password == account['password']:    
+        if username == account['username'] and bcrypt.check_password_hash(account['password'], password):    
             return True
     return False
 
@@ -207,13 +209,14 @@ def signup():
                     flash("This username is taken. Please try again", category='username_error')
                     return redirect(url_for("signup"))
 
+            hashed_pass = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
 
             new_account = {
                 'firstname': form.firstname.data,
                 'lastname': form.lastname.data,
                 'emailaddress': form.email.data,
                 'username': form.username.data,
-                'password': form.password.data,
+                'password': hashed_pass,
                 'followers': [],
                 'following': [],
                 'profile_pic': 'avatar.png'
