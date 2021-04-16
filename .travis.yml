@@ -3,7 +3,7 @@ python:
   - "3.8"
 # command to install dependencies
 install:
-  - pip install -r gianfrancodumoulinbertucci/SOEN341/requirements.txt
+  - pip install -r $PWD/requirements.txt
 # command to run tests
 script:
   - pytest
