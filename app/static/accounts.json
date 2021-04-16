@@ -5,7 +5,7 @@
         "followers": [],
         "following": [],
         "lastname": "elchanati",
-        "password": "123456789",
+        "password": "$2b$12$gerlhRUNnyHZcdlHa2IXm.O7eV3luOgjnscZXAZvexJkU/kxGLt/6",
         "profile_pic": "avatar.png",
         "username": "moham123"
     },
@@ -15,7 +15,7 @@
         "followers": [],
         "following": [],
         "lastname": "s",
-        "password": "1",
+        "password": "$2b$12$uY7wjJLbr8jGqJf.giSFSO0Hx2RAxq/KsuANbb8wkwB7a283Zrm4O",
         "profile_pic": "avatar.png",
         "username": "j"
     },
@@ -25,7 +25,7 @@
         "followers": [],
         "following": [],
         "lastname": "el chanati",
-        "password": "mohamad123",
+        "password": "$2b$12$6kV9SPQByLbDSEXj/DhpOufpPfKWjogAe1ltx7fa.ArO.Eja/R4g2",
         "profile_pic": "avatar.png",
         "username": "mohamad"
     },
@@ -35,7 +35,7 @@
         "followers": [],
         "following": [],
         "lastname": "ahmad",
-        "password": "ahmad123456",
+        "password": "$2b$12$4qcMi.KwmKvFeNlLGakgweXnCgH1Kx.nSe8ambU4ensi0xoMULAXq",
         "profile_pic": "avatar.png",
         "username": "ahmad"
     },
@@ -45,7 +45,7 @@
         "followers": [],
         "following": [],
         "lastname": "ahmad",
-        "password": "ahmad123456",
+        "password": "$2b$12$/S7Z1S.TIcH09WTh.Z0H1uzujYyJXHm5lYKi2jdqL7WiLyK6hGfdy",
         "profile_pic": "avatar.png",
         "username": "ahmad1"
     },
@@ -55,7 +55,7 @@
         "followers": [],
         "following": [],
         "lastname": "elk",
-        "password": "omar123456",
+        "password": "$2b$12$MNX9y04VUUSYQ0nke.K4sOs.cZtZX67YxY95MMfJjt3faLVxVphSO",
         "profile_pic": "avatar.png",
         "username": "omar"
     },
@@ -70,7 +70,7 @@
             "david"
         ],
         "lastname": "Dumoulin",
-        "password": "6969420",
+        "password": "$2b$12$dQuvEUdVXEOb8gZk9Nfrw.l0QtWaixm7gNKYSvyA2cBU7aP81OTke",
         "profile_pic": "this.JPG",
         "username": "gdbertucci"
     },
@@ -80,7 +80,7 @@
         "followers": [],
         "following": [],
         "lastname": "el",
-        "password": "123456",
+        "password": "$2b$12$xZDwK.Czuj2bo6c/YeNCQuCLTZ8wQaBisuGft1/UEiqty6V0DQKbi",
         "profile_pic": "avatar.png",
         "username": "melch"
     },
@@ -90,7 +90,7 @@
         "followers": [],
         "following": [],
         "lastname": "test password",
-        "password": "123456",
+        "password": "$2b$12$K7Z7s0sPe61kI5P/SXXJVuvlt0qTeeSVdDBIrS9jjJPu4CEi2u782",
         "profile_pic": "avatar.png",
         "username": "test123"
     },
@@ -100,7 +100,7 @@
         "followers": [],
         "following": [],
         "lastname": "mm",
-        "password": "123456",
+        "password": "$2b$12$8GqlVyFHc/zGDQ6peKzho.DCmxkc1hleoWUQ4sEz29YD.zw1PuMJy",
         "profile_pic": "avatar.png",
         "username": "mmcchh"
     },
@@ -110,7 +110,7 @@
         "followers": [],
         "following": [],
         "lastname": "m",
-        "password": "123456",
+        "password": "$2b$12$BFBNvQTgjKlWPvtTCd0fKO6yBGrrrzCwIhzANYqfDj1AJagujpS5a",
         "profile_pic": "avatar.png",
         "username": "mmchh"
     },
@@ -120,7 +120,7 @@
         "followers": [],
         "following": [],
         "lastname": "test",
-        "password": "123456",
+        "password": "$2b$12$W0WDYQLFht/bvVVQzZrfPuqhuc1alWdoQQvpXcuzpfsR3lA6pIYQ6",
         "profile_pic": "avatar.png",
         "username": "finaltest"
     },
@@ -130,7 +130,7 @@
         "followers": [],
         "following": [],
         "lastname": "test",
-        "password": "123456",
+        "password": "$2b$12$6VjccvDFvWYG2mfYjEKea.oq1sX7hBK2/zLBGh2PIz4BO8maTxVnO",
         "profile_pic": "avatar.png",
         "username": "finalfinaltest"
     },
@@ -140,7 +140,7 @@
         "followers": [],
         "following": [],
         "lastname": "test",
-        "password": "123456",
+        "password": "$2b$12$rdn1DYdZt1bjNXfnFIGRte3dCGtl93FqtJleTYrB3Sz3yzH1Iud7O",
         "profile_pic": "avatar.png",
         "username": "lasttest"
     },
@@ -150,7 +150,7 @@
         "followers": [],
         "following": [],
         "lastname": "stark",
-        "password": "ironman",
+        "password": "$2b$12$XLRdaeEVyz9QkDN/VgIjDOBpqUEvZ1Teld65EsCACC/nQWtYviHUW",
         "profile_pic": "avatar.png",
         "username": "tstark"
     }
