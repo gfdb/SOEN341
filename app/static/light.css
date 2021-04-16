@@ -199,24 +199,11 @@ body {
   margin: auto;
   display: block;
   top: 100px;
-  /* left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%); */
   width: 80%;
   max-width: 700px;
 }
 
-/* Caption of Modal Image */
-/* #caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
-} */
+
 
 /* Add Animation */
 .modal-content, #caption {  
@@ -234,20 +221,6 @@ body {
 @keyframes zoom {
   from {transform:scale(0)} 
   to {transform:scale(1)}
-}
-
-/* The Close Button */
-
-.close {
-  position: absolute;
-  float: left;
-  z-index: 2;
-  top: 80px;
-  left: 925px;
-  color: #f1f1f1;
-  font-size: 100px;
-  font-weight: bold;
-  transition: 0.3s;
 }
 
 .close:hover,
