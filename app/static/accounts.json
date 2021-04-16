@@ -1,0 +1,157 @@
+[
+    {
+        "email": "concordia@a.ca",
+        "firstname": "Mohamad",
+        "followers": [],
+        "following": [],
+        "lastname": "elchanati",
+        "password": "123456789",
+        "profile_pic": "avatar.png",
+        "username": "moham123"
+    },
+    {
+        "emailaddress": "j",
+        "firstname": "j",
+        "followers": [],
+        "following": [],
+        "lastname": "s",
+        "password": "1",
+        "profile_pic": "avatar.png",
+        "username": "j"
+    },
+    {
+        "emailaddress": "mm@gmail.com",
+        "firstname": "mohamad",
+        "followers": [],
+        "following": [],
+        "lastname": "el chanati",
+        "password": "mohamad123",
+        "profile_pic": "avatar.png",
+        "username": "mohamad"
+    },
+    {
+        "emailaddress": "ahmad@123.com",
+        "firstname": "ahmad",
+        "followers": [],
+        "following": [],
+        "lastname": "ahmad",
+        "password": "ahmad123456",
+        "profile_pic": "avatar.png",
+        "username": "ahmad"
+    },
+    {
+        "emailaddress": "ahmad@123.com",
+        "firstname": "ahmad",
+        "followers": [],
+        "following": [],
+        "lastname": "ahmad",
+        "password": "ahmad123456",
+        "profile_pic": "avatar.png",
+        "username": "ahmad1"
+    },
+    {
+        "emailaddress": "omar@ss.com",
+        "firstname": "omar",
+        "followers": [],
+        "following": [],
+        "lastname": "elk",
+        "password": "omar123456",
+        "profile_pic": "avatar.png",
+        "username": "omar"
+    },
+    {
+        "emailaddress": "gdbertucci@gmail.com",
+        "firstname": "Gianfranco",
+        "followers": [],
+        "following": [
+            "Mohamad El Chanati",
+            "David Roper",
+            "Franco Dumoulin",
+            "david"
+        ],
+        "lastname": "Dumoulin",
+        "password": "6969420",
+        "profile_pic": "this.JPG",
+        "username": "gdbertucci"
+    },
+    {
+        "emailaddress": "mm@bestmail.com",
+        "firstname": "mohamad",
+        "followers": [],
+        "following": [],
+        "lastname": "el",
+        "password": "123456",
+        "profile_pic": "avatar.png",
+        "username": "melch"
+    },
+    {
+        "emailaddress": "test@test.com",
+        "firstname": "test username",
+        "followers": [],
+        "following": [],
+        "lastname": "test password",
+        "password": "123456",
+        "profile_pic": "avatar.png",
+        "username": "test123"
+    },
+    {
+        "emailaddress": "mm@gamil.com",
+        "firstname": "mohammed",
+        "followers": [],
+        "following": [],
+        "lastname": "mm",
+        "password": "123456",
+        "profile_pic": "avatar.png",
+        "username": "mmcchh"
+    },
+    {
+        "emailaddress": "m@gamil.com",
+        "firstname": "m",
+        "followers": [],
+        "following": [],
+        "lastname": "m",
+        "password": "123456",
+        "profile_pic": "avatar.png",
+        "username": "mmchh"
+    },
+    {
+        "emailaddress": "ft@mail.com",
+        "firstname": "final",
+        "followers": [],
+        "following": [],
+        "lastname": "test",
+        "password": "123456",
+        "profile_pic": "avatar.png",
+        "username": "finaltest"
+    },
+    {
+        "emailaddress": "ff@gamil.com",
+        "firstname": "final final",
+        "followers": [],
+        "following": [],
+        "lastname": "test",
+        "password": "123456",
+        "profile_pic": "avatar.png",
+        "username": "finalfinaltest"
+    },
+    {
+        "emailaddress": "this@is.test",
+        "firstname": "franco yes",
+        "followers": [],
+        "following": [],
+        "lastname": "test",
+        "password": "123456",
+        "profile_pic": "avatar.png",
+        "username": "lasttest"
+    },
+    {
+        "emailaddress": "tony@starkindustries.com",
+        "firstname": "tony",
+        "followers": [],
+        "following": [],
+        "lastname": "stark",
+        "password": "ironman",
+        "profile_pic": "avatar.png",
+        "username": "tstark"
+    }
+]
