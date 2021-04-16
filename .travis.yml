@@ -2,5 +2,3 @@
   script:
     - pytest
   install: 
-    - pip --version
-    - pip install --user -r requirements.txt
