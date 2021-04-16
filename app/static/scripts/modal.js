@@ -1,7 +1,7 @@
 var modal = document.getElementById("myModal");
 
 var modalImg = document.getElementById("modal-img");
-var captionText = document.getElementById("caption");
+
 
 document.addEventListener("click", (e) => {
     const elem = e.target;
@@ -12,10 +12,9 @@ document.addEventListener("click", (e) => {
     }
   })
   
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
+
   
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() { 
+  // When the user clicks on modal image, close the modal
+  modal.onclick = function() { 
     modal.style.display = "none";
   }

@@ -9,6 +9,7 @@ from uuid import uuid4
 
 from flask import (Flask, flash, redirect, render_template, request, session,
                    url_for)
+from flask_bcrypt import Bcrypt
 from flask_wtf import FlaskForm
 from jinja2 import Environment
 from wtforms import PasswordField, StringField, SubmitField
@@ -16,11 +17,11 @@ from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, Email, InputRequired, Length
 from wtforms_components import validators
 
-from applib.app_lib import (follow, get_accounts, get_num_followers,
-                            get_num_following, get_posts, get_profile_pic,
-                            like_post, post_comment,
-                            set_profile_pic, swap_theme, unfollow, unlike_post,
-                            auth_login, post_a_picture, create_account)
+from applib.app_lib import (auth_login, create_account, follow, get_accounts,
+                            get_num_followers, get_num_following, get_posts,
+                            get_profile_pic, like_post, post_a_picture,
+                            post_comment, set_profile_pic, swap_theme,
+                            unfollow, unlike_post)
 from applib.forms import (Colormode, CommentForm, Follow, Like, Login,
                           Register, Unfollow, Unlike)
 
@@ -28,6 +29,7 @@ jinja_env = Environment()
 
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 app.config['SECRET_KEY'] = 'ErenYeager'
 
@@ -117,7 +119,7 @@ def login():
         if 'color_mode' in request.form:
                 swap_theme('login')
         if form.validate_on_submit():
-            if auth_login(form.username.data, form.password.data):
+            if auth_login(form.username.data, form.password.data, bcrypt):
                 session['username'] = form.username.data
                 flash(session['username'] + " is logged in", category='username is logged in')
                 return redirect(url_for('timeline'))
@@ -140,12 +142,14 @@ def signup():
                     flash("This username is taken. Please try again", category='username_error')
                     return redirect(url_for("signup"))
 
+            hashed_pass = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+
             new_account = {
                 'firstname': form.firstname.data,
                 'lastname': form.lastname.data,
                 'emailaddress': form.email.data,
                 'username': form.username.data,
-                'password': form.password.data,
+                'password': hashed_pass,
                 'followers': list(),
                 'following': list(),
                 'profile_pic': 'avatar.png'
