@@ -1,6 +1,7 @@
-pytest==6.2.3
-Flask==1.1.2
-Flask_WTF==0.14.3
-Jinja2==2.11.3
-WTForms_Components==0.10.5
 WTForms==2.3.3
+WTForms_Components==0.10.5
+Flask==1.1.2
+Flask_Bcrypt==0.7.1
+Flask_WTF==0.14.3
+pytest==6.2.3
+Jinja2==2.11.3
