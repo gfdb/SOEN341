@@ -7,7 +7,7 @@ from json import load, dump
 from flask import Flask, render_template, request, url_for, redirect, flash, session
 from os import path
 from uuid import uuid4
-from forms import CommentForm, Register, Login, Follow, Unfollow, Like, Unlike, Colormode
+from applib.forms import CommentForm, Register, Login, Follow, Unfollow, Like, Unlike, Colormode
 from flask_wtf import FlaskForm
 
 from wtforms import StringField, PasswordField, SubmitField
@@ -51,6 +51,8 @@ def follow(followee, follower):
             account['following'].append(follower)
             with open('app/static/accounts.json', 'w') as all_accounts:
                 dump(accounts, all_accounts, indent=4, sort_keys=True)
+        return True
+    return False
 
 def unfollow(followee, follower):
     for account in accounts:
@@ -58,6 +60,8 @@ def unfollow(followee, follower):
             account['following'].remove(follower)
             with open('app/static/accounts.json', 'w') as all_accounts:
                 dump(accounts, all_accounts, indent=4, sort_keys=True)
+        return True
+    return False
 
 def like_post(person_liking, post_uuid):
     for post in posts:
@@ -69,6 +73,8 @@ def like_post(person_liking, post_uuid):
                 break
     with open('app/static/posts.json', 'w') as all_posts:
         dump(posts, all_posts, indent=4, sort_keys=True)
+        return True
+    return False
 
 def unlike_post(person_unliking, post_uuid):
     for post in posts:
@@ -80,6 +86,8 @@ def unlike_post(person_unliking, post_uuid):
                 break
     with open('app/static/posts.json', 'w') as all_posts:
         dump(posts, all_posts, indent=4, sort_keys=True)
+        return True
+    return False
 
 
 
