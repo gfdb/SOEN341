@@ -1,4 +1,6 @@
   language: python
   script:
     - pytest
-  install: pip --version
+  install: 
+    - pip --version
+    - pip install -r requirements.txt
