@@ -4,7 +4,7 @@ import os
 import pytest
 
 from app import app as myapp
-from app import like_post, unlike_post, follow, unfollow
+from applib.app_lib import get_posts, get_accounts, follow, unfollow, like_post, unlike_post
 from flask import url_for, request
 import re
 
@@ -55,27 +55,65 @@ def test_logout_page(client):
 
 def test_like_post(client):
     
-    like = like_post('test', 'dd31faa4-ccd8-4ff0-b616-dfc8d2bdfc74')
+    post_uuid = 'dd31faa4-ccd8-4ff0-b616-dfc8d2bdfc74'
+    username = 'test'
     
-    assert like == True
+    like_post(username, post_uuid)
+
+    posts = get_posts()
+    is_liked = False
+    for post in posts:
+        if post['uuid'] == post_uuid:
+            if username in post['likers']:
+                is_liked = True
+            break
+    
+    assert is_liked == True
 
 def test_unlike_post(client):
 
-    unlike = unlike_post('test', 'dd31faa4-ccd8-4ff0-b616-dfc8d2bdfc74')
+    post_uuid = 'dd31faa4-ccd8-4ff0-b616-dfc8d2bdfc74'
+    username = 'test'
+    
+    unlike_post(username, post_uuid)
 
-    assert unlike == True
+    posts = get_posts()
+    is_liked = True
+    for post in posts:
+        if post['uuid'] == post_uuid:
+            if username not in post['likers']:
+                is_liked = False
+            break
+    
+    assert is_liked == False
 
 def test_follow_user(client):
 
-    do_follow = follow('gdbertucci', 'test')
+    username = 'gdbertucci'
+    person_to_follow = 'test'
+    follow(username, person_to_follow)
 
-    assert do_follow == True
+    accounts = get_accounts()
+    is_following = False
+    for account in accounts:
+        if username == account['username']:
+            if 'test' in account['following']:
+                is_following = True
+            break
+    assert is_following == True
 
 def test_unfollow_user(client):
 
-    do_unfollow = unfollow('gdbertucci', 'test')
+    username = 'gdbertucci'
+    person_to_unfollow = 'test'
+    unfollow(username, person_to_unfollow)
 
-    assert do_unfollow == True
-
-
+    accounts = get_accounts()
+    is_following = True
+    for account in accounts:
+        if username == account['username']:
+            if 'test' not in account['followers']:
+                is_following = False
+            break
+    assert is_following == False
 
