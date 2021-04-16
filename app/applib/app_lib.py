@@ -2,10 +2,10 @@ from json import load, dump
 from flask import redirect, url_for, session
 
 
-def auth_login(username, password):
+def auth_login(username, password, bcrypt):
     accounts = get_accounts()
     for account in accounts:
-        if username == account['username'] and password == account['password']:    
+        if username == account['username'] and bcrypt.check_password_hash(account['password'], password):    
             return True
     return False
 
