@@ -37,4 +37,4 @@ class Unlike(FlaskForm):
     unlike_post_uuid = HiddenField('unlike_post_uuid')
 
 class Colormode(FlaskForm):
-    color_mode = HiddenField('color_mode')
+    color_mode = HiddenField('color_mode') 
